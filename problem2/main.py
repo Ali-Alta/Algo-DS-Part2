@@ -1,5 +1,18 @@
 def maximum_buy_product(money, product_price):
-    return 0
+    if not product_price or money <= 0:
+        return 0
+
+    product_price.sort()
+    total_product = 0
+    
+    for price in product_price:
+        if money >= price:
+            money -= price
+            total_product += 1
+        else:
+            break
+        
+    return total_product
 
 if __name__ == "__main__":
     print(maximum_buy_product(50000, [25000, 25000, 10000, 14000]))      # 3
